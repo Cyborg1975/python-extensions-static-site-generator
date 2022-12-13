@@ -11,7 +11,8 @@ def collect_files(source, site_parsers):
             if parser.valid_file_ext(path.suffix):
                 files.append(path)
 
-@hook.register(generate_menu)
+
+@hook.register("generate_menu")
 def generate_menu(html, ext):
     template = '<li><a href="{}{}">{}</a></li>'
     menu_item = lambda name, ext: template.format(name, ext, name.title())
