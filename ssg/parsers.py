@@ -49,7 +49,7 @@ class MarkdownParser(Parser):
         filtered = hooks.filter("generate_menu", html, self.base_ext)
         self.write(path, dest, filtered)
         sys.stdout.write("\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(path.name, content))
-        written()
+        hooks.event("written")
 
 
 class ReStructuredTextParser(Parser):
@@ -63,4 +63,4 @@ class ReStructuredTextParser(Parser):
         sys.stdout.write(
             "\x1b[1;32m{} converted to HTML. Metadata: {}\n".format(path.name, content)
         )
-        written()
+        hooks.event("written")
